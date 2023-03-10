@@ -37,4 +37,16 @@ public class BookManagerRepositoryTests {
 
     }
 
+    @Test
+    public void testCreatesAndDelBookById() {
+        Book book1 = new Book(1L, "Book one", "This is the description for Book one", "Person one", Genre.Fantasy);
+
+        Book book2 = new Book(2L, "Book Two", "This is the description for Book Two", "Person Two", Genre.Fantasy);
+        bookManagerRepository.save(book1);
+        bookManagerRepository.save(book2);
+
+        bookManagerRepository.deleteById(2L);
+        assertThat(bookManagerRepository.count()).isEqualTo(1L);
+
+    }
 }
