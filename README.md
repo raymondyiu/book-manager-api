@@ -39,6 +39,7 @@ The features are:
 - Get a Book by ID
 - Add a Book
 - Update a Book
+- Delete a Book by ID
 
 📘 Task 1: Implement the following User Story with tests.
 
