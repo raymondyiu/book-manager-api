@@ -73,4 +73,5 @@ to add in exception handling to the project?
 ![get book id already exists](./images/get-book-id-not-exist.png)
 - PUT method
 ![put book id already exists](./images/put-book-id-not-exist.png)
-
+- DELETE method
+  ![delete book id already exists](./images/delete-book-id-not-exist.png)
