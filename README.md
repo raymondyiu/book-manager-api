@@ -47,11 +47,11 @@ The features are:
 
 ### test result of delete a book using Postman
 - 3 books exists in the database
-![3 books](./images/3 books.png)
+![3 books](./images/3-books.png)
 - delete book id 3
-![delete book 3](./images/delete book 3.png)
+![delete book 3](./images/delete-book-3.png)
 - 2 books remain in the database
-  ![2 books](./images/2 books.png)
+  ![2 books](./images/2-books.png)
 
 📘 Extension Task: Oh no! 😭 We've only covered the happy paths in the solution, can you figure out a way
 to add in exception handling to the project? 
@@ -61,7 +61,7 @@ to add in exception handling to the project?
 ### Test result of adding duplicate id
 - status code = IM_USED
 - adding header - "book" : "book {id} already exist"
-  ![book id already exists](./images/book id already exist.png)
+  ![book id already exists](./images/book-id-already-exist.png)
 
 - Clue 2: What if someone wants to find a book by an ID that doesn't yet exist? 
   How can we improve the API by handling errors gracefully and show a helpful message to the client?
@@ -70,6 +70,7 @@ to add in exception handling to the project?
 - status code = 204 No Content
 - adding header - "book" : "book {id} not exist"
 - GET method
-![get book id already exists](./images/get book id not exist.png)
+![get book id already exists](./images/get-book-id-not-exist.png)
 - PUT method
-![put book id already exists](./images/put book id not exist.png)
+![put book id already exists](./images/put-book-id-not-exist.png)
+

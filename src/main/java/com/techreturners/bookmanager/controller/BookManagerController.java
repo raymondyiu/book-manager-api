@@ -71,8 +71,15 @@ public class BookManagerController {
 
     @DeleteMapping({"/{bookId}"})
     public ResponseEntity<Book> deleteBookById(@PathVariable("bookId") Long bookId) {
-        bookManagerService.deleteBookById(bookId);
         HttpHeaders httpHeaders = new HttpHeaders();
+        Book queryBook = null;
+        try {
+            queryBook = bookManagerService.getBookById(bookId);
+        } catch (Exception e){
+            httpHeaders.add("book", "book " + bookId + " not exist");
+            return new ResponseEntity<>(queryBook, httpHeaders, HttpStatus.NO_CONTENT);
+        }
+        bookManagerService.deleteBookById(bookId);
         httpHeaders.add("book", String.format("book %d deleted.", bookId));
         return new ResponseEntity<>(httpHeaders, HttpStatus.OK);
     }
