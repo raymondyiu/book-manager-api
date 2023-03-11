@@ -58,7 +58,18 @@ to add in exception handling to the project?
 
 - Clue 1: What if someone wants to add a book with an ID for a book that already exists? How do we handle this gracefully?
 
+### Test result of adding duplicate id
+- status code = IM_USED
+- adding header - "book" : "book {id} already exist"
+  ![book id already exists](./images/book id already exist.png)
 
 - Clue 2: What if someone wants to find a book by an ID that doesn't yet exist? 
   How can we improve the API by handling errors gracefully and show a helpful message to the client?
   
+### Test result of getting book id not exist
+- status code = 204 No Content
+- adding header - "book" : "book {id} not exist"
+- GET method
+![get book id already exists](./images/get book id not exist.png)
+
+

@@ -25,13 +25,20 @@ public class BookManagerController {
 
     @GetMapping({"/{bookId}"})
     public ResponseEntity<Book> getBookById(@PathVariable Long bookId) {
-        return new ResponseEntity<>(bookManagerService.getBookById(bookId), HttpStatus.OK);
+        HttpHeaders httpHeaders = new HttpHeaders();
+        Book queryBook = null;
+        try {
+            queryBook = bookManagerService.getBookById(bookId);
+        } catch (Exception e){
+            httpHeaders.add("book", "book " + bookId + " not exist");
+            return new ResponseEntity<>(queryBook, httpHeaders, HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(queryBook, HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<Book> addBook(@RequestBody Book book) {
         HttpHeaders httpHeaders = new HttpHeaders();
-
         Book queryBook = null;
         try {
             queryBook = bookManagerService.getBookById(book.getId());
@@ -50,6 +57,13 @@ public class BookManagerController {
     //User Story 4 - Update Book By Id Solution
     @PutMapping({"/{bookId}"})
     public ResponseEntity<Book> updateBookById(@PathVariable("bookId") Long bookId, @RequestBody Book book) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        Book queryBook = null;
+        queryBook = bookManagerService.getBookById(book.getId());
+        if (queryBook == null){
+            httpHeaders.add("book", "book " + queryBook.getId().toString() + "not exist");
+            return new ResponseEntity<>(queryBook, httpHeaders, HttpStatus.NO_CONTENT);
+        }
         bookManagerService.updateBookById(bookId, book);
         return new ResponseEntity<>(bookManagerService.getBookById(bookId), HttpStatus.OK);
     }
