@@ -59,9 +59,10 @@ public class BookManagerController {
     public ResponseEntity<Book> updateBookById(@PathVariable("bookId") Long bookId, @RequestBody Book book) {
         HttpHeaders httpHeaders = new HttpHeaders();
         Book queryBook = null;
-        queryBook = bookManagerService.getBookById(book.getId());
-        if (queryBook == null){
-            httpHeaders.add("book", "book " + queryBook.getId().toString() + "not exist");
+        try {
+            queryBook = bookManagerService.getBookById(bookId);
+        } catch (Exception e){
+            httpHeaders.add("book", "book " + bookId + " not exist");
             return new ResponseEntity<>(queryBook, httpHeaders, HttpStatus.NO_CONTENT);
         }
         bookManagerService.updateBookById(bookId, book);

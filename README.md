@@ -71,5 +71,5 @@ to add in exception handling to the project?
 - adding header - "book" : "book {id} not exist"
 - GET method
 ![get book id already exists](./images/get book id not exist.png)
-
-
+- PUT method
+![put book id already exists](./images/put book id not exist.png)
