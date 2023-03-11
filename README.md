@@ -45,6 +45,13 @@ The features are:
 
 `User Story: As a user, I want to use the Book Manager API to delete a book using its ID`
 
+### test result of delete a book using Postman
+- 3 books exists in the database
+![3 books](./images/3 books.png)
+- delete book id 3
+![delete book 3](./images/delete book 3.png)
+- 2 books remain in the database
+  ![2 books](./images/2 books.png)
 
 📘 Extension Task: Oh no! 😭 We've only covered the happy paths in the solution, can you figure out a way
 to add in exception handling to the project? 
